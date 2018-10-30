@@ -12,11 +12,11 @@ module.exports = function (app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/quotes/:name", function (req, res) {
+  app.get("/quote/:symbol", function (req, res) {
     db.Quote.findOne({
-      where: { name: req.params.name }
+      where: { name: req.params.symbol }
     }).then(function (result) {
-      res.render("example", {
+      res.render("quote", {
         quotes: result
       });
     });
