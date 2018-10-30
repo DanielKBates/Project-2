@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     dayCode: DataTypes.STRING,
     serverTimestamp: DataTypes.STRING,
     mode: DataTypes.STRING,
-    lastPrice: DataTypes.DECIMAL(10,4),
+    lastPrice: DataTypes.DECIMAL(10,2),
     tradeTimestamp: DataTypes.STRING,
     netChange: DataTypes.DECIMAL(10,4),
     percentChange: DataTypes.DECIMAL(10,4),
