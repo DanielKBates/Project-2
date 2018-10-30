@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Search Reponse</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Filters
+                    </a>
+                    <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="gainers" href="#">Top 10 Gainers</a>
+                        <a class="dropdown-item" id="price" href="#">Price Range</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="container">
+            <div class="card  mt-5">
+                <div class="card-body">
+                    <div id="stockInfo">
+                        <div>stock info goes here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div id="graph">
+                        <div>graph</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+
+
+            <div class="col">
+
+                <div class="float-right">
+                    <ul class="list-group" id="stockList">
+                        <li class="list-group-item">Apple Inc.</li>
+                        <li class="list-group-item">Microsoft Corporation</li>
+                        <li class="list-group-item">Amazon.com Inc</li>
+                        <li class="list-group-item">Berkshire Hathaway Inc. Class B</li>
+                        <li class="list-group-item">Johnson & Johnson</li>
+                        <li class="list-group-item">Facebook Inc. Class C</li>
+                        <li class="list-group-item">JPMorgan Chase & Co.</li>
+                        <li class="list-group-item">Alphabet Inc. Class C</li>
+                        <li class="list-group-item">Exxon Mobil Corporation</li>
+                        <li class="list-group-item">Alphabet Inc. Class A</li>
+                        <li class="list-group-item">Pfizer Inc.</li>
+                        <li class="list-group-item">UnitedHealth Group Incorporated</li>
+                        <li class="list-group-item">Bank of America Corp</li>
+                        <li class="list-group-item">Visa Inc. Class A</li>
+                        <li class="list-group-item">Verizon Communications Inc.</li>
+                        <li class="list-group-item">Wells Fargo & Company</li>
+                        <li class="list-group-item">Procter & Gamble Company</li>
+                        <li class="list-group-item">Chevron Corporation</li>
+                        <li class="list-group-item">AT&T Inc.</li>
+                        <li class="list-group-item">Intel Corporation</li>
+                        <li class="list-group-item">Cisco Systems Inc.</li>
+                        <li class="list-group-item">Home Depot Inc.</li>
+                        <li class="list-group-item">Boeing Company</li>
+                        <li class="list-group-item">Merck & Co. Inc.</li>
+                        <li class="list-group-item">Mastercard Incorporated Class A</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="row" id="comments">
+                <div class="pl-5 pt-5 col">
+                    <h4>Comments</h4>
+                    <input class="form-control" type="text" placeholder="Default input">
+                    <input class="form-control" type="text" placeholder="Default input">
+                    <input class="form-control" type="text" placeholder="Default input">
+                </div>
+            </div> -->
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
