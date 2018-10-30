@@ -27,6 +27,7 @@ require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: true };
 
+// If the Node ENV variable is test, reset the database
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
@@ -44,4 +45,6 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
+// Need to be able to import app in mocha to be able to test
+// Normally we would not export app out of server.js
 module.exports = app;
