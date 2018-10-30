@@ -71,7 +71,6 @@ module.exports = function (app) {
       res.json(result)
     })
   })
-
   app.get("/api/stocks/losers", function(req, res) {
     db.Quote.findAll({
       where: {
