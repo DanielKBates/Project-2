@@ -2,7 +2,10 @@
   "development": {
     "username": "root",
     "password": "root",
+<<<<<<< HEAD
     "port" : 8889,
+=======
+>>>>>>> 0bf2764beb4db787e5bbb9a881e5db4bc80c24f0
     "database": "stock_db",
     "host": "localhost",
     "dialect": "mysql"
