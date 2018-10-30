@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Filters
+        </a>
+        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" id="gainers" href="/views/index.handlebars">Top 10 Gainers</a>
+          <a class="dropdown-item" id="price" href="/views/index.handlebars">Price Range</a>
+          <!-- <div class="dropdown-divider"></div> -->
+          <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="container">
+    <div class="card  mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Today's Stock Information</h5>
+        <div id="stockInfo">
+          Company Info: {{name}}, {{symbol}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-5">
+      <div class="card-body">
+        <div id="graph">
+          <div>6 Month Trends</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+
+
+
+    <div class="col">
+
+      <div class="float-right">
+        <ul id="example-list" class="list-group">
+          {{#each quotes}}
+          <li>
+            <p>
+              <a href="/views/quote.handlebars">{{name}}</a>, {{symbol}}, ${{open}}
+            </p>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="row" id="comments">
+                <div class="pl-5 pt-5 col">
+                    <h4>Comments</h4>
+                    <input class="form-control" type="text" placeholder="Default input">
+                    <input class="form-control" type="text" placeholder="Default input">
+                    <input class="form-control" type="text" placeholder="Default input">
+                </div>
+            </div> -->
