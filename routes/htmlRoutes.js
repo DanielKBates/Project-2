@@ -5,20 +5,24 @@ module.exports = function (app) {
   app.get("/", function (req, res, next) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
-        quotes: result.slice(0,19)
-        }
+        quotes: result.slice(0, 19)
+      }
       );
     });
   });
 
-  // Load example page and pass in an example by id
+  // Load quote page and pass in a quote by symbol
   app.get("/quote/:symbol", function (req, res) {
     db.Quote.findOne({
-      where: { name: req.params.symbol }
+      where: { symbol: req.params.symbol }
     }).then(function (result) {
-      res.render("quote", {
-        quotes: result
-      });
+      db.Quote.findAll({}).then(function (result2) {
+        res.render("quote", {
+          quote: result,
+          quotes: result2
+        });
+      })
+
     });
   });
 
