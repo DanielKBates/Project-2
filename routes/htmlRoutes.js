@@ -5,8 +5,8 @@ module.exports = function (app) {
   app.get("/", function (req, res, next) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
-        quotes: result.slice(0, 19)
-
+        quotes: result.slice(0, 19),
+        symbol: result
       });
     });
   });
