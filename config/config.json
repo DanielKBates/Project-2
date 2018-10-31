@@ -5,8 +5,8 @@
     "port": 3306,
     "database": "stock_db",
     "host": "localhost",
-    "dialect": "mysql",
-    "port": 3306
+    "dialect": "mysql"
+    
   },
   "test": {
     "username": "root",
