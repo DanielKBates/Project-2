@@ -48,9 +48,9 @@ module.exports = function (app) {
     db.Quote.findAll({
       where: {
         percentChange: {
-          $lte: 0.000
+          $lt: 0.000
         }
-      }, order: [["percentChange", "DESC"]]
+      }, order: [["percentChange", "ASC"]]
     }).then(function (result) {
       res.render("losers", {
         losers: result.slice(0, 19)
@@ -58,22 +58,22 @@ module.exports = function (app) {
     })
   })
   app.get("/sorted/asc", function (req, res) {
-    app.get("/api/stocks/sorted/asc", function (req, res) {
-      db.Quote.findAll({
-        where: {
-          lastPrice: {
-            $gte: 0.10
-          }
-        }, order: [["lastPrice", "ASC"]]
-      }).then(function (result) {
-        res.render("asc", {
-          asc: result
-        })
+
+    db.Quote.findAll({
+      where: {
+        lastPrice: {
+          $gte: 0.10
+        }
+      }, order: [["lastPrice", "ASC"]]
+    }).then(function (result) {
+      res.render("asc", {
+        asc: result
       })
     })
   })
 
-  app.get("/api/stocks/sorted/desc", function (req, res) {
+
+  app.get("/sorted/desc", function (req, res) {
     db.Quote.findAll({
       where: {
         lastPrice: {
