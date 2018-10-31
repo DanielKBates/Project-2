@@ -15,10 +15,10 @@ app.use(express.static("public"));
 var hbs = exphbs.create({
   helpers: {
     firstTwenty: function (arr) {
-      
-      return arr.slice(0,19);
+
+      return arr.slice(0, 19);
     },
-    jsonStringify: function (ob){
+    jsonStringify: function (ob) {
       return JSON.stringify(ob)
     }
   }
@@ -43,26 +43,23 @@ require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 
-// If the Node ENV variable is test, reset the database
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "production") {
+
+if (process.env.JAWSDB_URL) {
   db.sequelize.sync(syncOptions).then(function () {
-    app.listen(PORT)
+    app.listen(process.env.JAWSDB_URL)
   })
+} else {
+
+  db.sequelize.sync(syncOptions).then(function () {
+    app.listen(PORT, function () {
+      console.log(
+        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+        PORT,
+      );
+    });
+  });
 }
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, function () {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
 
-// Need to be able to import app in mocha to be able to test
-// Normally we would not export app out of server.js
+
 module.exports = app;
