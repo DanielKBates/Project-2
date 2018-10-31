@@ -6,6 +6,7 @@ module.exports = function (app) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
         quotes: result.slice(0, 19)
+      
       }
       );
     });
@@ -17,14 +18,19 @@ module.exports = function (app) {
       where: { symbol: req.params.symbol }
     }).then(function (result) {
       db.Quote.findAll({}).then(function (result2) {
+
         res.render("quote", {
           quote: result,
-          quotes: result2.slice(0,19)
-        });
+          quotes: result2.slice(0, 19),
+        })
       })
-
     });
   });
+
+
+
+
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
