@@ -369,8 +369,26 @@ module.exports = function (app) {
 //     }
 //   })
 
+// rp({
+//   url: "https://marketdata.websol.barchart.com/getHistory.json?apikey=8e4b1fd737d20bf7cf707a1cfdc44e9e&symbol=NFLX&type=daily&startDate=20100101&maxRecords=180&interval=1&order=asc&sessionFilter=EFK&splits=true&dividends=true&volume=sum&nearby=1&jerq=true",
+//   json: true
+// }).then(function (repos) {
+//   for (var i = 0; i < repos.results.length; i++) {
+//     db.NFLX.create({
+//       symbol: repos.results[i].symbol,
+//       timestamp: repos.results[i].timestamp,
+//       tradingDay: repos.results[i].tradingDay,
+//       open: repos.results[i].open,
+//       high: repos.results[i].high,
+//       low: repos.results[i].low,
+//       close: repos.results[i].close,
+//       volume: repos.results[i].volume,
+//     })
+//   }
+// })
 
 
 
 // }
 
+// }
