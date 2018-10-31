@@ -1,15 +1,27 @@
 var db = require("../models");
+var rp = require("request-promise");
 
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res, next) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
-        quotes: result.slice(0, 19)
+        quotes: result.slice(0, 19),
+        symbol: result
       }
       );
     });
   });
+  // app.get("/test/", function (req, res, next) {
+  //   db.Quote.findAll({}).then(function (result) {
+  //     res.render("index", {
+  //       symbol: symbol
+  //     }
+  //     );
+  //   });
+  // });
+
+
 
   // Load quote page and pass in a quote by symbol
   app.get("/quote/:symbol", function (req, res) {

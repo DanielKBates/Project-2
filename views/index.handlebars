@@ -20,16 +20,16 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" id="searchText" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+    <form autocomplete="off" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 autocomplete" id="searchText" type="search" placeholder="Search" aria-label="Search">
     </form>
+    <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
   </div>
 </nav>
 
 <div class="container pt-5">
   <div class="card">
-    <div class="card-body id=topStocks">
+    <div class="card-body" id="topStocks">
       <ul id="quote-list" class="list-group">
         {{#each quotes}}
         <li>
@@ -43,3 +43,21 @@
   </div>
 
 </div>
+ 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+  var symbols = []
+  {{#each symbol}}
+   symbols.push("{{name}}, {{symbol}}")
+  {{/each}}
+  
+  console.log(symbols)
+ 
+  $("#searchText").autocomplete({
+    source: symbols
+  })
+
+
+</script>

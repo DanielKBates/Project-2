@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 // If the Node ENV variable is test, reset the database
 // If running a test, set syncOptions.force to true
