@@ -1,3 +1,4 @@
+
 module.exports = function(sequelize, DataTypes) {
   var Quote = sequelize.define("Quote", {
     symbol: DataTypes.STRING,

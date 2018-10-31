@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<<<<<<< HEAD
+  <a class="navbar-brand" href="/">SPX Watchlist</a>
+=======
   <a class="navbar-brand" href="#">Navbar</a>
+>>>>>>> 29f7faf28ac6ad57372749a86be152596ad8924b
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,11 +17,12 @@
           Filters
         </a>
         <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" id="gainers" href="/views/index.handlebars">Top 20 Gainers</a>
-          <a class="dropdown-item" id="losers" href="/views/index.handlebars">Top 20 Losers</a>
-          {{!-- <a class="dropdown-item" id="price" href="/views/index.handlebars">Price Range</a> --}}
+          <a class="dropdown-item" id="homeButton" href="/">Home</a>
+          <a class="dropdown-item" id="gainers" href="/sorted/gainers">Biggest Gainers</a>
+          <a class="dropdown-item" id="losers" href="/sorted/losers">Biggest Losers</a>
           <!-- <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
+          <a class="dropdown-item" id="highToLow" href="/sorted/desc">Stock Price: High to Low</a>
+          <a class="dropdown-item" id="lowToHigh" href="/sorted/asc">Stock Price: Low to High</a>
         </div>
       </li>
     </ul>
@@ -29,47 +34,82 @@
 </nav>
 
 
-<div class="container">
-  <div class="card  mt-5 float-left">
-    <div class="card-body">
-      <h5 class="card-title"><strong>Today's Stock Information</strong></h5>
-      <div id="stockInfo">
-        <strong>Company Info:</strong> {{quote.name}}, {{quote.symbol}},
-        <br>
-        <br>
-        <ul>
-          <li>Last Traded Price: ${{quote.lastPrice}},</li>
-          <li>Today's Open: ${{quote.open}},</li>
-          <li>Daily High: ${{quote.high}},</li>
-          <li>Daily Low: ${{quote.low}},</li>
-          <li>Percent Change: {{quote.percentChange}},</li>
-          <li>Volume: {{quote.volume}}</li>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col">
+        <div class="card  mt-5 float-left">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Today's Stock Information</strong></h5>
+            <div id="stockInfo">
+              <strong>Company Info:</strong> {{quote.name}}, {{quote.symbol}},
+              <br>
+              <br>
+              <ul>
+                <li>Last Traded Price: ${{quote.lastPrice}},</li>
+                <li>Today's Open: ${{quote.open}},</li>
+                <li>Daily High: ${{quote.high}},</li>
+                <li>Daily Low: ${{quote.low}},</li>
+                <li>Percent Change: {{quote.percentChange}},</li>
+                <li>Volume: {{quote.volume}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container float-left">
+          <div id="tradingview_ef6be"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
+              target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+          <script type="text/javascript">
+            new TradingView.widget(
+              {
+                "width": 700,
+                "height": 500,
+                "symbol": "NASDAQ:AAPL",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "Light",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "container_id": "tradingview_ef6be"
+              }
+            );
+          </script>
+          <!-- TradingView Widget END -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card mt-5 float-left">
+          <div class="card-body">
+            <div id="graph">
+              <div>6 Month Trends</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card float-right">
+      <div class="card-body">
+        <ul id="example-list" class="list-group">
+          {{#each quotes}}
+          <li>
+            <p>
+              <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , ${{open}}
+            </p>
+          </li>
+          {{/each}}
         </ul>
       </div>
     </div>
-  </div>
-
-  <div class="card mt-5 float-left">
-    <div class="card-body">
-      <div id="graph">
-        <div>6 Month Trends</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-<div class="card float-right">
-  <div class="card-body">
-
-    <ul id="example-list" class="list-group">
-      {{#each quotes}}
-      <li>
-        <p>
-            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , ${{open}}
-        </p>
-      </li>
-      {{/each}}
-    </ul>
-
   </div>
 </div>
