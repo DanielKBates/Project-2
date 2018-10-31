@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
@@ -11,6 +12,19 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+var hbs = exphbs.create({
+  helpers: {
+    firstTwenty: function (arr) {
+      
+      return arr.slice(0,19);
+    },
+    jsonStringify: function (ob){
+      return JSON.stringify(ob)
+    }
+  }
+})
+
+
 
 
 // Handlebars
@@ -33,12 +47,12 @@ var syncOptions = { force: true };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
+  syncOptions.force = false;
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

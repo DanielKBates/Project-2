@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">SPX Watchlist</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Filters
+        </a>
+        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" id="homeButton" href="/">Home</a>
+          <a class="dropdown-item" id="gainers" href="/sorted/gainers">Biggest Gainers</a>
+          <a class="dropdown-item" id="losers" href="/sorted/losers">Biggest Losers</a>
+          <!-- <div class="dropdown-divider"></div> -->
+          <a class="dropdown-item" id="highToLow" href="/sorted/desc">Stock Price: High to Low</a>
+           <a class="dropdown-item" id="lowToHigh" href="/sorted/asc">Stock Price: Low to High</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" id="searchText" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 ">
+      <h1>Biggest Gainers</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-5">
+  <div class="row">
+  <div class="card">
+    <div class="card-body id=topStocks">
+      <ul id="quote-list" class="list-group">
+        {{#each gainers}}
+        <li>
+            <div class="col-lg-12">
+              <a href="/quote">{{name}}</a>, {{symbol}}, Percent Change: {{percentChange}}%
+            </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
