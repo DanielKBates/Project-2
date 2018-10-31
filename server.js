@@ -44,11 +44,11 @@ require("./routes/htmlRoutes")(app);
 var syncOptions = { force: false };
 
 
-if (process.env.JAWSDB_URL) {
-  db.sequelize.sync(syncOptions).then(function () {
-    app.listen(process.env.JAWSDB_URL)
-  })
-} else {
+// if (process.env.JAWSDB_URL) {
+//   db.sequelize.sync(syncOptions).then(function () {
+//     app.listen(process.env.JAWSDB_URL)
+//   })
+// } else {
 
   db.sequelize.sync(syncOptions).then(function () {
     app.listen(PORT, function () {
@@ -58,7 +58,7 @@ if (process.env.JAWSDB_URL) {
       );
     });
   });
-}
+// }
 
 
 
