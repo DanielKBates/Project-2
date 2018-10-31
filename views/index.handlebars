@@ -22,10 +22,10 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" id="searchText" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
+    <form autocomplete="off" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 autocomplete" id="searchText" type="search" placeholder="Search" aria-label="Search">
     </form>
+    <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
   </div>
 </nav>
 
@@ -47,15 +47,36 @@
       </div>
     </div>
 
+  </div>
 
-    <div class="col-lg-6">
-      <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/indices/" rel="noopener"
-            target="_blank"><span class="blue-text">Indices</span></a> by TradingView</div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
-          async>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+
+    var symbols = []
+    { { #each symbol } }
+    symbols.push("{{name}}, {{symbol}}")
+    {
+      {
+        /each}}
+
+        console.log(symbols)
+
+        $("#searchText").autocomplete({
+          source: symbols
+        })
+
+
+  </script>
+
+  <div class="col-lg-6">
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/indices/" rel="noopener"
+          target="_blank"><span class="blue-text">Indices</span></a> by TradingView</div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+async>
             {
               "showChart": true,
                 "locale": "en",
@@ -82,10 +103,9 @@
                                         }
                                       ]
             }
-          </script>
+        </script>
 
-      </div>
-      <!-- TradingView Widget END -->
     </div>
+    <!-- TradingView Widget END -->
   </div>
-  
+</div>

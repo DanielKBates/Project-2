@@ -1,4 +1,5 @@
 var db = require("../models");
+var rp = require("request-promise");
 
 module.exports = function (app) {
   // Load index page
@@ -10,6 +11,16 @@ module.exports = function (app) {
       });
     });
   });
+  // app.get("/test/", function (req, res, next) {
+  //   db.Quote.findAll({}).then(function (result) {
+  //     res.render("index", {
+  //       symbol: symbol
+  //     }
+  //     );
+  //   });
+  // });
+
+
 
   // Load quotes page and pass in an example by id
   app.get("/quote/:symbol", function (req, res) {
