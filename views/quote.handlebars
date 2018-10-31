@@ -36,9 +36,9 @@
   <div class="col-lg-8">
     <div class="row">
       <div class="col">
-        <div class="card  mt-5 float-left">
+        <div class="card  mt-5 ml-5 float-left">
           <div class="card-body">
-            <h5 class="card-title"><strong>Today's Stock Information</strong></h5>
+            <h5 class="card-title"><strong>Today's <span id="symbol">{{quote.symbol}}</span> Stock Information</strong></h5>
             <div id="stockInfo">
               <strong>Company Info:</strong> {{quote.name}}, {{quote.symbol}},
               <br>
@@ -61,14 +61,14 @@
         <div class="tradingview-widget-container float-left">
           <div id="tradingview_ef6be"></div>
           <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
-              target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+              target="_blank"><span class="blue-text">{{quote.name}} chart</span></a></div>
           <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
           <script type="text/javascript">
             new TradingView.widget(
               {
                 "width": 450,
                 "height": 300,
-                "symbol": "NASDAQ:AAPL",
+                "symbol": "{{quote.symbol}}",
                 "interval": "D",
                 "timezone": "Etc/UTC",
                 "theme": "Light",
