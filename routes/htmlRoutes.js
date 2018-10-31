@@ -6,8 +6,8 @@ module.exports = function (app) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
         quotes: result.slice(0, 19)
-        }
-      );
+
+      });
     });
   });
 
@@ -19,10 +19,11 @@ module.exports = function (app) {
       }
     }).then(function (result) {
       db.Quote.findAll({}).then(function (result2) {
+
         res.render("quote", {
           quote: result,
-          quotes: result2.slice(0, 19)
-        });
+          quotes: result2.slice(0, 19),
+        })
       })
     });
   });
@@ -36,39 +37,58 @@ module.exports = function (app) {
           $gte: "0.001"
         }
       }, order: [["percentChange", "DESC"]]
-    }).then(function(result) {
+    }).then(function (result) {
       res.render("gainers", {
-        gainers: result.slice(0,19)
+        gainers: result.slice(0, 19)
       })
     })
   })
 
   app.get("/sorted/losers", function (req, res) {
-    db.Quote.findAll({}).then(function (result) {
+    db.Quote.findAll({
+      where: {
+        percentChange: {
+          $lt: 0.000
+        }
+      }, order: [["percentChange", "ASC"]]
+    }).then(function (result) {
       res.render("losers", {
-        quotes: result.slice(0, 19)
+        losers: result.slice(0, 19)
+      })
+    })
+  })
+  app.get("/sorted/asc", function (req, res) {
+
+    db.Quote.findAll({
+      where: {
+        lastPrice: {
+          $gte: 0.10
+        }
+      }, order: [["lastPrice", "ASC"]]
+    }).then(function (result) {
+      res.render("asc", {
+        asc: result
       })
     })
   })
 
-  app.get("/sorted/asc", function (req, res) {
-    db.Quote.findAll({}).then(function (result) {
-      res.render("asc", {
-        quotes: result.slice(0, 19)
-      })
-    })
-  })
 
   app.get("/sorted/desc", function (req, res) {
-    db.Quote.findAll({}).then(function (result) {
+    db.Quote.findAll({
+      where: {
+        lastPrice: {
+          $lte: 5000.00
+        }
+      }, order: [["lastPrice", "DESC"]]
+    }).then(function (result) {
       res.render("desc", {
-        quotes: result.slice(0, 19)
+        desc: result
       })
     })
   })
-
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
   });
-};
+
+}

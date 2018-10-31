@@ -19,7 +19,7 @@
           <a class="dropdown-item" id="losersButton" href="/sorted/losers">Biggest Losers</a>
           <!-- <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" id="highToLowButton" href="/sorted/desc">Stock Price: High to Low</a>
-           <a class="dropdown-item" id="lowToHighButton" href="/sorted/asc">Stock Price: Low to High</a>
+          <a class="dropdown-item" id="lowToHighButton" href="/sorted/asc">Stock Price: Low to High</a>
         </div>
       </li>
     </ul>
@@ -35,10 +35,10 @@
   <div class="card">
     <div class="card-body id=topStocks">
       <ul id="quote-list" class="list-group">
-        {{#each quotes}}
+        {{#each asc}}
         <li>
           <p>
-            <a href="/quote">{{name}}</a>, {{symbol}}, ${{open}}
+            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}},Today's Opening Price: ${{open}}
           </p>
         </li>
         {{/each}}
