@@ -1,5 +1,5 @@
 $("#searchBtn").on("click", function(event) {
-    event.preventDefault
+    event.preventDefault();
     var searchValue = $("#searchText").val().trim()
     console.log(searchValue)
     var symbol = searchValue.split(", ")

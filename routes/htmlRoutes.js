@@ -34,6 +34,7 @@ module.exports = function (app) {
         res.render("quote", {
           quote: result,
           quotes: result2.slice(0, 19),
+          symbol: result2
         })
       })
     });

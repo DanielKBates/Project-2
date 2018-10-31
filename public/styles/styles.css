@@ -5,3 +5,8 @@
 #topStocks:hover {
   background-color: darkgray
 }
+
+.ui-autocomplete {
+  background-color: inherit;
+  position: relative;
+}

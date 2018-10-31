@@ -37,8 +37,7 @@
         {{#each losers}}
         <li>
           <p>
-            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , Percent Change: {{percentChange}}%
-          </p>
+            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , Percent Change: {{percentChange}}% </p>
         </li>
         {{/each}}
       </ul>
@@ -47,22 +46,3 @@
 
 </div>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-
-  var symbols = []
-  { { #each symbol } }
-  symbols.push("{{name}}, {{symbol}}")
-  {
-    {
-      /each}}
-
-      console.log(symbols)
-
-      $("#searchText").autocomplete({
-        source: symbols
-      })
-
-
-</script>

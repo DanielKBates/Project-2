@@ -124,11 +124,9 @@
 <script type="text/javascript">
 
   var symbols = []
-  { { #each symbol } }
+  {{#each symbol}}
   symbols.push("{{name}}, {{symbol}}")
-  {
-    {
-      /each}}
+  {{/each}}
 
       console.log(symbols)
 
