@@ -12,9 +12,10 @@
           aria-expanded="false">
           Filters
         </a>
-        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" id="gainers" href="#">Top 10 Gainers</a>
-          <a class="dropdown-item" id="price" href="#">Price Range</a>
+      <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" id="gainers" href="/views/index.handlebars">Top 20 Gainers</a>
+          <a class="dropdown-item" id="losers" href="/views/index.handlebars">Top 20 Losers</a>
+          {{!-- <a class="dropdown-item" id="price" href="/views/index.handlebars">Price Range</a> --}}
           <!-- <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
         </div>
@@ -34,7 +35,7 @@
         {{#each quotes}}
         <li>
           <p>
-            <a href="/views/quote.handlebars">{{name}}</a>, {{symbol}}, ${{open}}
+            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , ${{open}}
           </p>
         </li>
         {{/each}}

@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Load index page
-  app.get("/", function (req, res, next) {
+  app.get("/", function (req, res) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
         quotes: result.slice(0, 19)
@@ -19,7 +19,7 @@ module.exports = function (app) {
       db.Quote.findAll({}).then(function (result2) {
         res.render("quote", {
           quote: result,
-          quotes: result2
+          quotes: result2.slice(0,19)
         });
       })
 

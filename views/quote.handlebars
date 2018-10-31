@@ -13,8 +13,9 @@
           Filters
         </a>
         <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" id="gainers" href="/views/index.handlebars">Top 10 Gainers</a>
-          <a class="dropdown-item" id="price" href="/views/index.handlebars">Price Range</a>
+          <a class="dropdown-item" id="gainers" href="/views/index.handlebars">Top 20 Gainers</a>
+          <a class="dropdown-item" id="losers" href="/views/index.handlebars">Top 20 Losers</a>
+          {{!-- <a class="dropdown-item" id="price" href="/views/index.handlebars">Price Range</a> --}}
           <!-- <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
         </div>
@@ -27,45 +28,48 @@
   </div>
 </nav>
 
-<div class="row">
-  <div class="container">
-    <div class="card  mt-5">
-      <div class="card-body">
-        <h5 class="card-title">Today's Stock Information</h5>
-        <div id="stockInfo">
-          Company Info: {{quote.name}}, {{quote.symbol}}
-        </div>
-      </div>
-    </div>
 
-    <div class="card mt-5">
-      <div class="card-body">
-        <div id="graph">
-          <div>6 Month Trends</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-
-
-
-    <div class="col">
-
-      <div class="float-right">
-        <ul id="example-list" class="list-group">
-          {{#each quotes}}
-          <li>
-            <p>
-              <a href="/views/quote.handlebars">{{name}}</a>, {{symbol}}, ${{open}}
-            </p>
-          </li>
-          {{/each}}
+<div class="container">
+  <div class="card  mt-5 float-left">
+    <div class="card-body">
+      <h5 class="card-title"><strong>Today's Stock Information</strong></h5>
+      <div id="stockInfo">
+        <strong>Company Info:</strong> {{quote.name}}, {{quote.symbol}},
+        <br>
+        <br>
+        <ul>
+          <li>Last Traded Price: ${{quote.lastPrice}},</li>
+          <li>Today's Open: ${{quote.open}},</li>
+          <li>Daily High: ${{quote.high}},</li>
+          <li>Daily Low: ${{quote.low}},</li>
+          <li>Percent Change: {{quote.percentChange}},</li>
+          <li>Volume: {{quote.volume}}</li>
         </ul>
       </div>
-
     </div>
   </div>
 
+  <div class="card mt-5 float-left">
+    <div class="card-body">
+      <div id="graph">
+        <div>6 Month Trends</div>
+      </div>
+    </div>
+  </div>
 
- 
+</div>
+<div class="card float-right">
+  <div class="card-body">
+
+    <ul id="example-list" class="list-group">
+      {{#each quotes}}
+      <li>
+        <p>
+            <a href="/quote/{{symbol}}" class="redirect">{{symbol}}</a>, {{name}} , ${{open}}
+        </p>
+      </li>
+      {{/each}}
+    </ul>
+
+  </div>
+</div>
