@@ -5,54 +5,64 @@ module.exports = function (app) {
   app.get("/", function (req, res, next) {
     db.Quote.findAll({}).then(function (result) {
       res.render("index", {
-        quotes: result.slice(0,19)
+        quotes: result.slice(0, 19)
         }
       );
     });
   });
 
   // Load quotes page and pass in an example by id
-  app.get("/:symbol", function (req, res) {
+  app.get("/quote/:symbol", function (req, res) {
     db.Quote.findOne({
       where: {
-         name: req.params.symbol 
+        symbol: req.params.symbol
       }
     }).then(function (result) {
-      res.render("quote", {
-        quotes: result
-      });
+      db.Quote.findAll({}).then(function (result2) {
+        res.render("quote", {
+          quote: result,
+          quotes: result2.slice(0, 19)
+        });
+      })
     });
   });
 
+
   // Load page with top 20 gainers
-  app.get("/gainers", function(req, res) {
-    db.Quote.findAll({}).then(function(result) {
+  app.get("/sorted/gainers", function (req, res) {
+    db.Quote.findAll({
+      where: {
+        percentChange: {
+          $gte: "0.001"
+        }
+      }, order: [["percentChange", "DESC"]]
+    }).then(function(result) {
       res.render("gainers", {
-        quotes: result.slice(0,20)
+        gainers: result.slice(0,19)
       })
     })
   })
 
-  app.get("/losers", function(req, res) {
-    db.Quote.findAll({}).then(function(result) {
+  app.get("/sorted/losers", function (req, res) {
+    db.Quote.findAll({}).then(function (result) {
       res.render("losers", {
-        quotes: result.slice(0,20)
+        quotes: result.slice(0, 19)
       })
     })
   })
 
-  app.get("/ASC", function(req, res) {
-    db.Quote.findAll({}).then(function(result) {
-      res.render("index", {
-        quotes: result
+  app.get("/sorted/asc", function (req, res) {
+    db.Quote.findAll({}).then(function (result) {
+      res.render("asc", {
+        quotes: result.slice(0, 19)
       })
     })
   })
 
-  app.get("/DESC", function(req, res) {
-    db.Quote.findAll({}).then(function(result) {
-      res.render("index", {
-        quotes: result
+  app.get("/sorted/desc", function (req, res) {
+    db.Quote.findAll({}).then(function (result) {
+      res.render("desc", {
+        quotes: result.slice(0, 19)
       })
     })
   })

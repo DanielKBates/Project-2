@@ -24,10 +24,14 @@ var hbs = exphbs.create({
   }
 })
 
+
+
 // Handlebars
 app.engine(
   "handlebars",
-  hbs.engine
+  exphbs({
+    defaultLayout: "main"
+  })
 );
 
 app.set("view engine", "handlebars");

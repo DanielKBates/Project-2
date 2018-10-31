@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/">SPX Watchlist</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,10 +13,12 @@
           Filters
         </a>
         <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" id="gainers" href="#">Top 10 Gainers</a>
-          <a class="dropdown-item" id="price" href="#">Price Range</a>
+          <a class="dropdown-item" id="homeButton" href="/">Home</a>
+          <a class="dropdown-item" id="gainers" href="/sorted/gainers">Biggest Gainers</a>
+          <a class="dropdown-item" id="losers" href="/sorted/losers">Biggest Losers</a>
           <!-- <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item" id="sort" href="#">Sort by Price</a>
+          <a class="dropdown-item" id="highToLow" href="/sorted/desc">Stock Price: High to Low</a>
+          <a class="dropdown-item" id="lowToHigh" href="/sorted/asc">Stock Price: Low to High</a>
         </div>
       </li>
     </ul>
@@ -27,19 +29,60 @@
   </div>
 </nav>
 
-<div class="container pt-5">
-  <div class="card">
-    <div class="card-body id=topStocks">
-      <ul id="quote-list" class="list-group">
-        {{#each quotes}}
-        <li>
-          <p>
-            <a href="/views/quote.handlebars">{{name}}</a>, {{symbol}}, ${{open}}
-          </p>
-        </li>
-        {{/each}}
-      </ul>
+<div class="container pt-2">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body pl-3" id="topStocks">
+          <ul id="quote-list" class="list-group">
+            {{#each quotes}}
+            <li>
+              <p>
+                <a href="/quote">{{name}}</a>, {{symbol}}, ${{open}}
+              </p>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
 
-</div>
+
+    <div class="col-lg-6">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/indices/" rel="noopener"
+            target="_blank"><span class="blue-text">Indices</span></a> by TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+          async>
+            {
+              "showChart": true,
+                "locale": "en",
+                  "largeChartUrl": "",
+                    "width": "400",
+                      "height": "600",
+                        "plotLineColorGrowing": "rgba(60, 188, 152, 1)",
+                          "plotLineColorFalling": "rgba(255, 74, 104, 1)",
+                            "gridLineColor": "rgba(233, 233, 234, 1)",
+                              "scaleFontColor": "rgba(214, 216, 224, 1)",
+                                "belowLineFillColorGrowing": "rgba(60, 188, 152, 0.05)",
+                                  "belowLineFillColorFalling": "rgba(255, 74, 104, 0.05)",
+                                    "symbolActiveColor": "rgba(242, 250, 254, 1)",
+                                      "tabs": [
+                                        {
+                                          "title": "Indices",
+                                          "symbols": [
+                                            {
+                                              "s": "INDEX:SPX",
+                                              "d": "S&P 500"
+                                            }
+                                          ],
+                                          "originalTitle": "Indices"
+                                        }
+                                      ]
+            }
+          </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
