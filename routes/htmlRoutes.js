@@ -8,8 +8,7 @@ module.exports = function (app) {
       res.render("index", {
         quotes: result.slice(0, 19),
         symbol: result
-      }
-      );
+      });
     });
   });
   // app.get("/test/", function (req, res, next) {
@@ -35,6 +34,7 @@ module.exports = function (app) {
         res.render("quote", {
           quote: result,
           quotes: result2.slice(0, 19),
+          symbol: result2
         })
       })
     });

@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
   <a class="navbar-brand" href="/">S&P 500 and Fun</a>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,10 +22,10 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
+    <form autocomplete="off" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 autocomplete" id="searchText" type="search" placeholder="Search" aria-label="Search">
     </form>
+    <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
   </div>
 </nav>
 
@@ -35,7 +33,7 @@
 <div class="row">
   <div class="col-lg-8">
     <div class="row">
-      <div class="col">
+      <div class="col-lg-6">
         <div class="card  mt-5 ml-5 float-left">
           <div class="card-body">
             <h5 class="card-title"><strong>Today's <span id="symbol">{{quote.symbol}}</span> Stock Information</strong></h5>
@@ -45,10 +43,15 @@
               <br>
               <ul>
                 <li>Last Traded Price: ${{quote.lastPrice}},</li>
+                <br>
                 <li>Today's Open: ${{quote.open}},</li>
+                <br>
                 <li>Daily High: ${{quote.high}},</li>
+                <br>
                 <li>Daily Low: ${{quote.low}},</li>
+                <br>
                 <li>Percent Change: {{quote.percentChange}},</li>
+                <br>
                 <li>Volume: {{quote.volume}}</li>
               </ul>
             </div>
@@ -56,9 +59,9 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container float-left">
+        <div class="tradingview-widget-container float-left mt-5 mr-5">
           <div id="tradingview_ef6be"></div>
           <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
               target="_blank"><span class="blue-text">{{quote.name}} chart</span></a></div>
@@ -66,8 +69,8 @@
           <script type="text/javascript">
             new TradingView.widget(
               {
-                "width": 450,
-                "height": 300,
+                "width": 500,
+                "height": 450,
                 "symbol": "{{quote.symbol}}",
                 "interval": "D",
                 "timezone": "Etc/UTC",
@@ -115,3 +118,21 @@
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+  var symbols = []
+  {{#each symbol}}
+  symbols.push("{{name}}, {{symbol}}")
+  {{/each}}
+
+      console.log(symbols)
+
+      $("#searchText").autocomplete({
+        source: symbols
+      })
+
+
+</script>
