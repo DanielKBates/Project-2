@@ -2,11 +2,19 @@
   line-height: 2.5;
 }
 
-#topStocks:hover {
+/* #topStocks:hover {
   background-color: darkgray
-}
+} */
 
 .ui-autocomplete {
   background-color: inherit;
   position: relative;
+}
+
+.navbar {
+  color: burlywood,
+}
+
+.card-body {
+  color: burlywood,
 }
